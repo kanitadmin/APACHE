@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  php-56-01:
+    image: bucchub/php-apache:5.6
+    container_name: php-56-01
+    restart: always
+    environment:
+      TZ: 'Asia/Bangkok'
+      PHP_MAX_EXECUTION_TIME: 60
+      PHP_MAX_INPUT_VARS: 10000
+      PHP_MEMORY_LIMIT: '256M'
+      PHP_POST_MAX_FILESIZE: '256M'
+      PHP_UPLOAD_MAX_FILESIZE: '50M'
+      PHP_MAX_INPUT_TIME: 60
+    volumes:
+      - /home/webhosts:/var/www/html
+      - php-56-config:/etc/apache2
+networks:
+  default:
+    name: facweb-net
+volumes:
+  web-config:
+  php-56-config:
